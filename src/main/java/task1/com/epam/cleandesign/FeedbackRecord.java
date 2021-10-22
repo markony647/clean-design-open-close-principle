@@ -24,6 +24,11 @@ public class FeedbackRecord extends Record {
         return this;
     }
 
+    @Override
+    String getRecordFormatted() {
+        return "feedback: " + getCriterion() + "=" + getQuality();
+    }
+
     public enum Quality {
         OFTEN_EXCEEDS_EXPECTATION,
         SOMETIMES_EXCEEDS_EXPECTATION,

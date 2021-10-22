@@ -1,6 +1,7 @@
 package task1.com.epam.cleandesign;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class WorkloadRecord extends Record {
 
@@ -14,4 +15,11 @@ public class WorkloadRecord extends Record {
         this.workload = workload;
     }
 
+    @Override
+    String getRecordFormatted() {
+        return getWorkload().entrySet()
+                .stream()
+                .map(e -> e.getKey() + ":" + e.getValue())
+                .collect(Collectors.joining(", ", "workload: ", ""));
+    }
 }
