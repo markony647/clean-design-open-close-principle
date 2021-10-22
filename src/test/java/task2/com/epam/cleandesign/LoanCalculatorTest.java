@@ -7,70 +7,83 @@ import static org.junit.Assert.assertThat;
 
 public class LoanCalculatorTest {
 
-    private final LoanCalculator calculator = new LoanCalculator();
+    private final IncomeMultiplier incomeMultiplier = new DefaultIncomeMultiplier();
 
     @Test
     public void studentLoanForYoungPoorPerson() {
-        assertThat(calculator.getStudentLoan(18, 100), is(100));
+        AbstractLoanCalculator calculator = new StudentLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(18, 100), is(100));
     }
 
     @Test
     public void studentLoanForOldPerson() {
-        assertThat(calculator.getStudentLoan(21, 100), is(250));
+        AbstractLoanCalculator calculator = new StudentLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(21, 100), is(250));
     }
 
     @Test
     public void studentLoanForRichPerson() {
-        assertThat(calculator.getStudentLoan(18, 2_000), is(200));
+        AbstractLoanCalculator calculator = new StudentLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(18, 2_000), is(200));
     }
 
     @Test
     public void carLoanForYoungPoorPerson() {
-        assertThat(calculator.getCarLoan(20, 500), is(2_000));
+        AbstractLoanCalculator calculator = new CarLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(20, 500), is(2_000));
     }
 
     @Test
     public void carLoanForAdultPoorPerson() {
-        assertThat(calculator.getCarLoan(45, 500), is(3_000));
+        AbstractLoanCalculator calculator = new CarLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(45, 500), is(3_000));
     }
 
     @Test
     public void carLoanForOldPoorPerson() {
-        assertThat(calculator.getCarLoan(60, 500), is(3_500));
+        AbstractLoanCalculator calculator = new CarLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(60, 500), is(3_500));
     }
 
     @Test
     public void carLoanForYoungRichPerson() {
-        assertThat(calculator.getCarLoan(20, 2_000), is(4_000));
+        AbstractLoanCalculator calculator = new CarLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(20, 2_000), is(4_000));
     }
 
     @Test
     public void carLoanForAdultRichPerson() {
-        assertThat(calculator.getCarLoan(45, 2_000), is(6_000));
+        AbstractLoanCalculator calculator = new CarLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(45, 2_000), is(6_000));
     }
 
     @Test
     public void carLoanForOldRichPerson() {
-        assertThat(calculator.getCarLoan(60, 2_000), is(7_000));
+        AbstractLoanCalculator calculator = new CarLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(60, 2_000), is(7_000));
     }
 
     @Test
     public void houseLoanForYoungPoorPerson() {
-        assertThat(calculator.getHouseLoan(20, 500), is(100_000));
+        AbstractLoanCalculator calculator = new HouseLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(20, 500), is(100_000));
     }
 
     @Test
     public void houseLoanForOldPoorPerson() {
-        assertThat(calculator.getHouseLoan(60, 500), is(100_000));
+        AbstractLoanCalculator calculator = new HouseLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(60, 500), is(100_000));
     }
 
     @Test
     public void houseLoanForYoungRichPerson() {
-        assertThat(calculator.getHouseLoan(20, 65_000), is(200_000));
+        AbstractLoanCalculator calculator = new HouseLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(20, 65_000), is(200_000));
     }
 
     @Test
     public void houseLoanForOldRichPerson() {
-        assertThat(calculator.getHouseLoan(60, 65_000), is(400_000));
+        AbstractLoanCalculator calculator = new HouseLoanCalculator(incomeMultiplier);
+        assertThat(calculator.calculate(60, 65_000), is(400_000));
     }
 }
