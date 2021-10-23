@@ -3,7 +3,7 @@ package task1.com.epam.cleandesign;
 public class SkillsRecord extends Record {
 
     private String skill;
-    private Level level;
+    private SkillsLevel level;
 
     public String getSkill() {
         return skill;
@@ -14,21 +14,17 @@ public class SkillsRecord extends Record {
         return this;
     }
 
-    public Level getLevel() {
+    public SkillsLevel getLevel() {
         return level;
     }
 
-    public SkillsRecord setLevel(Level level) {
+    public SkillsRecord setLevel(SkillsLevel level) {
         this.level = level;
         return this;
     }
 
     @Override
-    String getRecordFormatted() {
+    public String getFormatted() {
         return "skills: " + getSkill() + "=" + getLevel();
-    }
-
-    public enum Level {
-        EXPERT, ADVANCED, INTERMEDIATE, NOVICE
     }
 }

@@ -33,7 +33,7 @@ public class VisaRecord extends Record {
     }
 
     @Override
-    String getRecordFormatted() {
+    public String getFormatted() {
         return "visa: " + getCountry() + ", from: " + getFrom() + ", to: " + getTo();
     }
 }

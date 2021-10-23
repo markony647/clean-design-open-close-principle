@@ -16,7 +16,7 @@ public class WorkloadRecord extends Record {
     }
 
     @Override
-    String getRecordFormatted() {
+    public String getFormatted() {
         return getWorkload().entrySet()
                 .stream()
                 .map(e -> e.getKey() + ":" + e.getValue())

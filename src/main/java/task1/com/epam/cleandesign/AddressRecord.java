@@ -73,7 +73,7 @@ public class AddressRecord extends Record {
     }
 
     @Override
-    String getRecordFormatted() {
+    public String getFormatted() {
         return "address: " + getCountry() + ", " + getProvince() + ", " + getCity() + ", " +
                 getStreet() + " st., " + getBuilding() + " b., " + getApartment() + " apt., " +
                 getIndex();

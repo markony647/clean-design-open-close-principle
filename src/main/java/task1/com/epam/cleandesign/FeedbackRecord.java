@@ -4,7 +4,7 @@ public class FeedbackRecord extends Record {
 
     private String criterion;
 
-    private Quality quality;
+    private FeedbackQuality feedbackQuality;
 
     public String getCriterion() {
         return criterion;
@@ -15,25 +15,17 @@ public class FeedbackRecord extends Record {
         return this;
     }
 
-    public Quality getQuality() {
-        return quality;
+    public FeedbackQuality getQuality() {
+        return feedbackQuality;
     }
 
-    public FeedbackRecord setQuality(Quality quality) {
-        this.quality = quality;
+    public FeedbackRecord setQuality(FeedbackQuality feedbackQuality) {
+        this.feedbackQuality = feedbackQuality;
         return this;
     }
 
     @Override
-    String getRecordFormatted() {
+    public String getFormatted() {
         return "feedback: " + getCriterion() + "=" + getQuality();
-    }
-
-    public enum Quality {
-        OFTEN_EXCEEDS_EXPECTATION,
-        SOMETIMES_EXCEEDS_EXPECTATION,
-        MEETS_EXPECTATION,
-        SOMETIMES_FAILS_TO_MEET_EXPECTATION,
-        OFTEN_FAILS_TO_MEET_EXPECTATION
     }
 }

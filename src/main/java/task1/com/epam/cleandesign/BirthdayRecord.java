@@ -33,7 +33,7 @@ public class BirthdayRecord extends Record {
     }
 
     @Override
-    String getRecordFormatted() {
+    public String getFormatted() {
         return "birthday: " + getYear() + "/" + getMonth() + "/" + getDay();
     }
 }

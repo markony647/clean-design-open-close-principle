@@ -12,8 +12,6 @@ import static org.junit.Assert.assertThat;
 
 public class RecordFormatterTest {
 
-    private final RecordFormatter formatter = new RecordFormatter();
-
     @Test
     public void formatAddress() {
         AddressRecord addressRecord = new AddressRecord();
@@ -25,7 +23,7 @@ public class RecordFormatterTest {
         addressRecord.setBuilding("33");
         addressRecord.setApartment("N/A");
         addressRecord.setIndex("61000");
-        String actualResult = formatter.format(addressRecord);
+        String actualResult = addressRecord.getFormatted();
         assertThat(actualResult, is("address: Ukraine, Kharkivska, Kharkiv, 23 Serpnya st., 33 b., N/A apt., 61000"));
     }
 
@@ -35,7 +33,7 @@ public class RecordFormatterTest {
         birthdayRecord.setYear(1989);
         birthdayRecord.setMonth(11);
         birthdayRecord.setDay(27);
-        String actualResult = formatter.format(birthdayRecord);
+        String actualResult = birthdayRecord.getFormatted();
         assertThat(actualResult, is("birthday: 1989/11/27"));
     }
 
@@ -46,7 +44,7 @@ public class RecordFormatterTest {
         visaRecord.setCountry("Ukraine");
         visaRecord.setFrom(ZonedDateTime.of(2006, 7, 23, 0, 0, 0, 0, ZoneOffset.UTC));
         visaRecord.setTo(ZonedDateTime.of(2120, 7, 23, 0, 0, 0, 0, ZoneOffset.UTC));
-        String actualResult = formatter.format(visaRecord);
+        String actualResult = visaRecord.getFormatted();
         assertThat(actualResult, is("visa: Ukraine, from: 2006-07-23T00:00Z, to: 2120-07-23T00:00Z"));
     }
 
@@ -59,7 +57,7 @@ public class RecordFormatterTest {
         workload.put(2, 90d);
         workload.put(3, 0d);
         workloadRecord.setWorkload(workload);
-        String fmt = formatter.format(workloadRecord);
+        String fmt = workloadRecord.getFormatted();
         assertThat(fmt, is("workload: 1:100.0, 2:90.0, 3:0.0"));
     }
 
@@ -67,8 +65,8 @@ public class RecordFormatterTest {
     public void formatSkills() {
         SkillsRecord skillsRecord = new SkillsRecord();
         skillsRecord.setSkill("Java");
-        skillsRecord.setLevel(SkillsRecord.Level.INTERMEDIATE);
-        String actualResult = formatter.format(skillsRecord);
+        skillsRecord.setLevel(SkillsLevel.INTERMEDIATE);
+        String actualResult = skillsRecord.getFormatted();
         assertThat(actualResult, is("skills: Java=INTERMEDIATE"));
     }
 
@@ -76,8 +74,8 @@ public class RecordFormatterTest {
     public void formatFeedback() {
         FeedbackRecord feedbackRecord = new FeedbackRecord();
         feedbackRecord.setCriterion("Team work");
-        feedbackRecord.setQuality(FeedbackRecord.Quality.MEETS_EXPECTATION);
-        String actualResult = formatter.format(feedbackRecord);
+        feedbackRecord.setQuality(FeedbackQuality.MEETS_EXPECTATION);
+        String actualResult = feedbackRecord.getFormatted();
         assertThat(actualResult, is("feedback: Team work=MEETS_EXPECTATION"));
     }
 }

@@ -2,7 +2,7 @@ package task1.com.epam.cleandesign;
 
 public abstract class Record {
 
-    abstract String getRecordFormatted();
+    public abstract String getFormatted();
 
     private String id;
 
