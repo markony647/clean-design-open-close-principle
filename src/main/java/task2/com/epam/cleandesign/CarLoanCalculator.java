@@ -1,14 +1,13 @@
 package task2.com.epam.cleandesign;
 
 public class CarLoanCalculator extends AbstractLoanCalculator {
-    private final IncomeMultiplier incomeMultiplier;
 
     public CarLoanCalculator(IncomeMultiplier incomeMultiplier) {
-        this.incomeMultiplier = incomeMultiplier;
+        super(incomeMultiplier);
     }
 
     @Override
-    int calculate(int age, int income) {
+    int calculateBeforeApplyingMultiplier(int age, int income) {
         int loan = 2_000;
 
         if (age > 50) {
@@ -16,7 +15,6 @@ public class CarLoanCalculator extends AbstractLoanCalculator {
         } else if (age > 30) {
             loan += 1_000;
         }
-
-        return incomeMultiplier.multiply(loan, income);
+        return loan;
     }
 }
