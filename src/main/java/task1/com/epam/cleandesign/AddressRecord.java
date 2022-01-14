@@ -71,4 +71,11 @@ public class AddressRecord extends Record {
     public void setIndex(String index) {
         this.index = index;
     }
+
+    @Override
+    public String getFormatted() {
+        return "address: " + getCountry() + ", " + getProvince() + ", " + getCity() + ", " +
+                getStreet() + " st., " + getBuilding() + " b., " + getApartment() + " apt., " +
+                getIndex();
+    }
 }
